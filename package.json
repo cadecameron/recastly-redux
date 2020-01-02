@@ -9,6 +9,7 @@
     "test": "live-server --open=./SpecRunner.html --port=8081",
     "start": "live-server",
     "build": "webpack -d --watch"
+
   },
   "dependencies": {
     "babel-core": "6.24.1",
