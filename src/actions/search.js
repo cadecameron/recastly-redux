@@ -3,13 +3,19 @@ import changeVideoList from './videoList.js';
 import changeVideo from './currentVideo.js';
 import YOUTUBE_API_KEY from '../config/youtube.js';
 
+//import _ from './node_modules/lodash/lodash.js';
+
 
 var handleVideoSearch = (q) => {
   return (dispatch) => {
+    var options = {
+      key: YOUTUBE_API_KEY,
+      query: q
+    };
     //TODO:  Write an asynchronous action to handle a video search!
-    searchYouTube({ YOUTUBE_API_KEY, q }, (videos) => {
-      changeVideoList(videos);
-      changeVideo(videos[0]);
+    searchYouTube(options, (videos) => {
+      dispatch(changeVideoList(videos));
+      dispatch(changeVideo(videos[0]));
     });
   };
 };
