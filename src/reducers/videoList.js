@@ -1,13 +1,12 @@
 import Redux from 'redux';
 
-var videoListReducer = (previousState = sampleData, action) => {
+var videoListReducer = (previousState = [], action) => {
   //TODO: define a reducer for the videoList field of our state.
-  if (action.type === 'CHANGE_VIDEO_LIST') {
-    return Object.assign({}, previousState, {
-      videos: action.payload
-    });
-  } else {
-    return previousState;
+  switch (action.type) {
+    case 'CHANGE_VIDEO_LIST':
+      return action.videos || [];
+    default:
+      return previousState;
   }
 };
 
